@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Code coverage'){
             steps{
-                sh "./mvnw jacoco:test"
+                sh "./mvnw jacoco:check"
                 sh "./mvnw jacoco:report"
                 publishHTML (target: [
                                reportDir: 'build/reports/jacoco/test/html',
