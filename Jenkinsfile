@@ -17,7 +17,7 @@ pipeline {
              sh "./mvnw jacoco:check"
                             sh "./mvnw jacoco:report"
                             publishHTML (target: [
-                                           reportDir: '**/target/site/jacoco',
+                                           reportDir: 'target/site/jacoco',
                                            reportFiles: 'index.html',
                                            reportName: "JaCoCo Report"
                                       ])
