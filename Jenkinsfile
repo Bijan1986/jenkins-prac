@@ -14,12 +14,14 @@ pipeline {
         }
         stage('Code coverage'){
             steps{
-                script {
-                            def jacocoPath = '**/target/jacoco.exec'
-                            def jacocoReportPath = '**/target/site/jacoco'
+             sh "./mvnw jacoco:check"
+                            sh "./mvnw jacoco:report"
+                            publishHTML (target: [
+                                           reportDir: '**/target/site/jacoco',
+                                           reportFiles: 'index.html',
+                                           reportName: "JaCoCo Report"
+                                      ])
 
-                            publishCoverage adapters: [jacocoAdapter('**/target/jacoco.exec')], reportDir: '**/target/site/jacoco', reportFile: 'index.html'
-                        }
             }
         }
     }
