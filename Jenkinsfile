@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Build and Test using jenkinsfile') {
             steps {
-                sh 'mvn clean test'
+                sh './mvnw clean package'
             }
         }
         stage('Code coverage'){
